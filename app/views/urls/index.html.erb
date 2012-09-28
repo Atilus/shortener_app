@@ -1,0 +1,19 @@
+URL Shortening Service
+<hr>
+<%= form_for(@url) do |f| %>
+	<% if @url.errors.any? %>
+		<div id="error_explanation">
+			<h2>Invalid url: Please provide a valid one</h2>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :url %><br />
+		<%= f.text_field :url %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+<hr>
+Messages: <%= notice %>
