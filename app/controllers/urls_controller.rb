@@ -21,10 +21,10 @@ class UrlsController < ApplicationController
 		if @url.save
 			@last_url = Url.order("created_at").last
 			@new_encoded = bijective_encode(@last_url.id)
-			flash[:notice] = " The shortened url is: http://shortapp.herokuapp.com/"+@new_encoded
+			flash[:notice] = " The shortened url is: http://shortapp.herokuapp.com/urls/"+@new_encoded
 			respond_with(@url, :status => :created, :location => @url) do |format|
 				format.html { redirect_to root_path }
-				format.json { render json: {:msg => " The shortened url is: http://shortapp.herokuapp.com/"+@new_encoded} }
+				format.json { render json: {:msg => " The shortened url is: http://shortapp.herokuapp.com/urls/"+@new_encoded} }
 			end
 		else
 			respond_with(@url.errors, :status => :unprocessable_entity) do |format|
