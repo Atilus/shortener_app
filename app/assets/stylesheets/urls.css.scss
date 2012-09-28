@@ -1,3 +1,172 @@
 // Place all the styles related to the urls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body { background-color: #314A63; color: #F5BF24; background-image: url('at_2.jpg'); }
+ 
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+#wrapper {
+    /*center the wrapper*/
+    display:block;
+    margin:auto;
+    margin-top: 25px;
+    
+    /*size & position*/
+    width: 900px;
+    height:auto;
+    
+    /*auto-resize*/
+    position: relative;
+    overflow: auto; 
+}
+
+#header {	
+    /*center the header*/
+    display:block;
+    margin:auto;
+    
+    /*size & position*/
+    width: 800px;
+    height:auto;
+    
+	/*appearance*/
+	background-color: #61335D;
+	color: #F5BF24;
+	border: solid #000 1px;
+	
+    /*round & shape*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#error_explanation {
+    /*center the error*/
+    display:block;
+    margin:auto;
+    
+    /*size & position*/
+    width: 800px;
+    height:50px;
+    
+    /*appearance*/
+    background-color: #61335D;
+    color: #F5BF24;
+    border: solid #000 1px;
+    
+    /*round & shape*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#message {
+	/*size & position*/
+	margin-left:200px;
+	margin-top:10px;
+	height:auto;
+}
+
+#title {
+	/*position*/
+	text-align:center;
+	margin-top: 20px;
+}
+
+#main {
+    /*center the main*/
+    display:block;
+    margin:auto;
+    margin-top: 45px;
+    
+    /*size & position*/
+    width: 800px;
+    height:auto;
+    
+	/*appearance*/
+	background-color: #5FB231;
+	color: #B03137;
+	font-size: 15px;
+	text-shadow: 1px 0 0;
+	border: solid #000 1px;
+    
+    /*round & shape*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#field {
+	/*size & position*/
+	height:100px;
+	width:450px; 
+	height:auto;
+	margin-top:50px;
+	margin-left:170px;
+	
+    /*round & shape*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: solid #000 1px;
+}
+
+#head {
+	/*position*/
+	margin-top:20px;
+	margin-left:20px;
+	height:auto;
+}
+
+#body {
+	/*position*/
+	margin-top:10px;
+	margin-left:20px;
+	margin-bottom:10px;
+	height:auto;
+}
+
+#button {
+	/*size & position*/
+	height:100px;
+	margin-left:540px;
+	margin-bottom:10px;
+	height:auto;
+}
+ 
+#footer {
+    /*center the notice*/
+    display:block;
+    margin:auto;
+    margin-top: 45px;
+	
+    /*size & position*/
+    width: 800px;
+    height:75px;
+    height:auto;
+    
+    /*appearance*/
+	background-color: #5FB231;
+	color: #B03137;
+	font-size: 15px;
+	text-shadow: 1px 0 0;
+	border: solid #000 1px;
+	
+    /*round & shape*/
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#notice {
+    /*position the notice*/
+    margin-top: 10px;
+    margin-left: 75px;
+    margin-bottom:10px;
+    height:auto;
+}

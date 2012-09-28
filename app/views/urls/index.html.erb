@@ -1,19 +1,41 @@
-URL Shortening Service
-<hr>
-<%= form_for(@url) do |f| %>
-	<% if @url.errors.any? %>
-		<div id="error_explanation">
-			<h2>Invalid url: Please provide a valid one</h2>
+<div id="wrapper">
+	<div id="header">
+		<div id="title">
+			<h1>URL Shortening Service</h1>
+		</div>
+	</div>
+	
+	<%= form_for(@url) do |f| %>
+		<% if @url.errors.any? %>
+			<div id="error_explanation">
+				<div id="message">
+					<h2>Invalid url: Please provide a valid one</h2>
+				</div>
+			</div>
+		<% end %>
+	
+		<div id="main">	
+			<div id="field" class="field">
+				<div id="head">
+					<%= f.label "So do you want a short URL? " %><br />
+				</div> <br />
+				<div id="body">
+					<%= f.label "Give me one: " %>
+					<%= f.text_field :url %>
+				</div>
+			</div> <br />
+			<div id="actions" class="actions">
+				<div id="button">
+					<%= f.submit "Shorten it!"%>
+				</div>
+			</div>
 		</div>
 	<% end %>
+	<div id="footer">
+		<div id="notice">
+			Here is your result -> <%= notice %>
+		</div>
+	</div>
+</div>
 
-	<div class="field">
-		<%= f.label :url %><br />
-		<%= f.text_field :url %>
-	</div>
-	<div class="actions">
-		<%= f.submit %>
-	</div>
-<% end %>
-<hr>
-Messages: <%= notice %>
+

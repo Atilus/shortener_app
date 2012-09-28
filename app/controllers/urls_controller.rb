@@ -9,39 +9,23 @@ class UrlsController < ApplicationController
 		redirect_to :controller => "urls", :action => 'index'
 	end
 	
+	#Main
 	def index
 		@url = Url.new
-		#@urls = Url.all
-		
-		#respond_with @url
-	    
-		#respond_with(@url, :status => :created, :location => @url) do |format|
-			#format.html # index.html.erb
-			#format.json { render json: @url }
-		#end
 	end
 	
+	#Creates a new url given the correct parameters
 	def create
 		@url = Url.new(params[:url])
-		#@url.save
-		
-		#respond_with @url
-		
-		#if @url.save
-			#redirect_to :controller => "urls", :action => 'index'
-		#end
 		
 		if @url.save
 			@last_url = Url.order("created_at").last
 			@new_encoded = bijective_encode(@last_url.id)
-			flash[:notice] = " The shortened url is: http://localhost:3000/urls/"+@new_encoded
+			flash[:notice] = " The shortened url is: http://shortapp.herokuapp.com/"+@new_encoded
 			respond_with(@url, :status => :created, :location => @url) do |format|
-				format.html { redirect_to :controller => "urls", :action => 'index' }
-				format.json { render json: {:msg => " The shortened url is: http://localhost:3000/urls/"+@new_encoded} }
+				format.html { redirect_to root_path }
+				format.json { render json: {:msg => " The shortened url is: http://shortapp.herokuapp.com/"+@new_encoded} }
 			end
-		
-		# Have to send back the errors collection if they exist for xml, json and
-		# redirect back to new for html.
 		else
 			respond_with(@url.errors, :status => :unprocessable_entity) do |format|
 				format.html { render action: "index" }
@@ -50,8 +34,8 @@ class UrlsController < ApplicationController
 		end
 	end
 	
+	#Displays individual short urls
 	def show
-		#@url = Url.find(params[:id])
 		@decoded = bijective_decode(@short_url)
 		@forward_url = get_url(@decoded)
 		
@@ -59,15 +43,11 @@ class UrlsController < ApplicationController
 	    	format.html { redirect_to @forward_url }
 	    	format.json { render json: @forward_url }
 		end
-		
-		#respond_with @url
-		
-		#redirect_to :controller => "urls", :action => 'index'
 	end
 	
+	#Encodes a given original url
+	#Based on http://refactormycode.com/codes/125-base-62-encoding
 	def bijective_encode(i)
-		# from http://refactormycode.com/codes/125-base-62-encoding
-		# with only minor modification
 		return ALPHABET[0] if i == 0
 		s = ''
 		base = ALPHABET.length
@@ -78,20 +58,22 @@ class UrlsController < ApplicationController
 		s.reverse
 	end
 	
+	#Decodes a short url and returns the original one
+	#Based on http://rosettacode.org/wiki/Non-decimal_radices/Convert#Ruby
 	def bijective_decode(s)
-		# based on base2dec() in Tcl translation
-		# at http://rosettacode.org/wiki/Non-decimal_radices/Convert#Ruby
 		i = 0
 		base = ALPHABET.length
 		s.each_char { |c| i = i * base + ALPHABET.index(c) }
 		i
 	end
 	
+	#Returns an url given its id
 	def get_url(index)
 		return Url.find(index).url
 	end
 	
-  	def get_url_tail
+  	#Gets the last part(short url) of a given url 
+	def get_url_tail
 		@current_url = request.fullpath
 		@short_url = @current_url.split('/').last	
 	end
