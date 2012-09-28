@@ -1,6 +1,10 @@
 ShortenerApp::Application.routes.draw do
 	resources :urls
 	
+	root :to => 'urls#index'
+	
+  #http://shortapp.herokuapp.com/
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
